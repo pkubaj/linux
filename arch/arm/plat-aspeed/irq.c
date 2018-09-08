@@ -133,18 +133,8 @@ void __init ast_init_irq(void)
 				IRQ_SET_HIGH_LEVEL(0,i);
 				IRQ_SET_LEVEL_TRIGGER(0,i);
 			}
-			irq_set_chip_and_handler(i, &ast_irq_chip, handle_level_irq);
-//			irq_set_chip_data(irq, base);
-		} else {
-			if((i >= IRQ_TIMER3) && (i <= IRQ_TIMER7)) //Timer3/4/5/6/7
-				IRQ_SET_RISING_EDGE(0,i-32);
-			else {
-				IRQ_SET_HIGH_LEVEL(1,i-32);
-				IRQ_SET_LEVEL_TRIGGER(1,i-32);
-			}
-			irq_set_chip_and_handler(i, &ast_irq_chip, handle_level_irq);
-//			irq_set_chip_data(irq, base);
 		}
+		irq_set_chip_and_handler(i, &ast_irq_chip, handle_level_irq);
 		set_irq_flags(i, IRQF_VALID);
 	}
 	
