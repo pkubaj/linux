@@ -54,7 +54,6 @@ static void __iomem *ast_vic_base;
 static void ast_mask_irq(struct irq_data *d)
 {
 	u8 timer;
-	u8 cpu;
 	int idx = 0;
 	u32 irq = d->irq;
 	
@@ -62,9 +61,6 @@ static void ast_mask_irq(struct irq_data *d)
 	if(((d->irq >= IRQ_TIMER0) && (d->irq <= IRQ_TIMER2)))
 		timer = 1;
 
-	if(d->irq == IRQ_CPU)
-		cpu = 1;
-	
 	if (d->irq > 31) {
 		idx=1;
 		irq = d->irq - 32;
@@ -78,9 +74,6 @@ static void ast_mask_irq(struct irq_data *d)
 	if(timer)
 		IRQ_EDGE_CLEAR(idx, irq);	
 
-	if(cpu)
-		IRQ_SW_CLEAR(idx, irq);	
-	
 }
 
 static void ast_unmask_irq(struct irq_data *d)
