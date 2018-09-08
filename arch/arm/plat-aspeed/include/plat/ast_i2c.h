@@ -9,7 +9,7 @@
  */
 #include <plat/aspeed.h>
 
-#if defined(CONFIG_ARCH_AST1070)
+#if defined(CONFIG_ARCH_AST1070) || defined(CONFIG_ARCH_AST2100)
 #define AST_I2C_DMA_SIZE 4096
 #endif
 
