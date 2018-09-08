@@ -59,7 +59,7 @@ static void ast_mask_irq(struct irq_data *d)
 	u32 irq = d->irq;
 	
 
-	if(((d->irq >= IRQ_TIMER0) && (d->irq <= IRQ_TIMER2)) || ((d->irq >= IRQ_TIMER3) && (d->irq <= IRQ_TIMER7)))
+	if(((d->irq >= IRQ_TIMER0) && (d->irq <= IRQ_TIMER2)))
 		timer = 1;
 
 	if(d->irq == IRQ_CPU)
