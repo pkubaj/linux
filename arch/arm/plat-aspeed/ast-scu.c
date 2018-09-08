@@ -53,6 +53,8 @@ CLK24M
 #define SCUDBUG(fmt, args...)
 #endif
 
+#define AST_SCU_RAMDOM_DATA 0x78
+
 #define SCUMSG(fmt, args...) printk(fmt, ## args)
 
 static u32 ast_scu_base = IO_ADDRESS(AST_SCU_BASE);
