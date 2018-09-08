@@ -82,12 +82,6 @@ static struct map_desc ast_io_desc[] __initdata = {
 		.pfn			= __phys_to_pfn(AST_UART0_BASE),
 		.length 		= SZ_4K,
 		.type			= MT_DEVICE,
-	}, {
-
-		.virtual		= IO_ADDRESS(AST_SRAM_BASE),
-		.pfn			= __phys_to_pfn(AST_SRAM_BASE),
-		.length 		= SZ_32K + SZ_4K,
-		.type			= MT_DEVICE,
 	},
 };
 
@@ -131,7 +125,7 @@ void ast_restart(enum reboot_mode mode, const char *cmd)
 }
 
 //Non-DT
-MACHINE_START(ASPEED, AST_MACH_NAME)
+MACHINE_START(ASPEED, "AST2100")
 	.map_io			= ast_map_io,
 	.init_irq			= ast_init_irq,
 	.init_machine		= ast_init,
